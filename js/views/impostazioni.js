@@ -12,6 +12,8 @@ const STUDIO = [
   { name: 'phone', label: 'Telefono / WhatsApp dello studio', type: 'tel' },
   { name: 'address', label: 'Indirizzo' },
   { name: 'zone', label: 'Zona (per didascalie e hashtag)' },
+  { name: 'foundedYear', label: 'Anno di apertura', type: 'number', hint: 'Gli anni di esperienza sono il vantaggio sugli studi nuovi: finiscono in didascalie e modulo' },
+  { name: 'minPrice', label: 'Prezzo minimo di un tatuaggio (€)', type: 'number', hint: 'Mostrato nel modulo richieste: "tatuaggi da X €" filtra chi cerca solo il prezzo più basso' },
   { name: 'instagram', label: 'Instagram dello studio' },
   { name: 'reviewLink', label: 'Link recensione Google', hint: 'Google Business Profile → "Chiedi recensioni" → copia link', full: true },
   { name: 'bookingLink', label: 'Link prenotazione online (Fresha, Setmore…)', full: true },

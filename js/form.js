@@ -11,10 +11,14 @@ const q = new URLSearchParams(location.search);
 const phone = q.get('t') || DEFAULT_SETTINGS.phone;
 const studio = q.get('s') || DEFAULT_SETTINGS.studioName;
 const addr = q.get('a') || DEFAULT_SETTINGS.address;
+const year = Number(q.get('y') || DEFAULT_SETTINGS.foundedYear);
+const minPrice = Number(q.get('p') || 0);
 
 document.getElementById('studio').textContent = `${studio}: richiedi il tuo tatuaggio`;
 document.title = `Richiesta tatuaggio · ${studio}`;
 document.getElementById('addr').innerHTML = `${esc(studio)} · ${esc(addr)}`;
+const facts = [year ? `In studio dal ${year}` : '', 'Risposta entro 24 ore', 'Consulenza gratuita', minPrice ? `Tatuaggi da ${minPrice} €` : '', 'Materiale sterile e monouso'].filter(Boolean);
+document.getElementById('facts').innerHTML = facts.map((f) => `<span class="badge accent">${esc(f)}</span>`).join(' ');
 
 const FIELDS = [
   { name: 'name', label: 'Nome', required: true },

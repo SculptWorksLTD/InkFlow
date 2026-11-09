@@ -60,6 +60,8 @@ export function requestFormUrl(s) {
   if (digits) u.searchParams.set('t', digits.startsWith('39') || String(s.phone).trim().startsWith('+') ? digits : '39' + digits);
   u.searchParams.set('s', s.studioName);
   if (s.address) u.searchParams.set('a', s.address);
+  if (s.foundedYear) u.searchParams.set('y', s.foundedYear);
+  if (s.minPrice) u.searchParams.set('p', s.minPrice);
   return u.href;
 }
 

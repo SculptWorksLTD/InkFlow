@@ -36,8 +36,8 @@ export const FORMATS = {
   },
   sedici: {
     label: 'Storia dello studio', goal: 'Autorevolezza',
-    how: 'Un lavoro o un ricordo dagli archivi: lo studio esiste da oltre 16 anni, è il tuo vantaggio rispetto agli studi nuovi.',
-    hook: ['16 anni in via Vigevano', 'Tatuaggi fatti 10 anni fa, visti oggi', 'Da quando abbiamo aperto'],
+    how: 'Un lavoro o un ricordo dagli archivi: lo studio esiste da {anni} anni, è il tuo vantaggio rispetto agli studi nuovi.',
+    hook: ['Dal {dal} in via Vigevano', '{anni} anni di tatuaggi a Milano', 'Tatuaggi fatti 10 anni fa, visti oggi', 'Da quando abbiamo aperto'],
   },
 };
 
@@ -79,6 +79,8 @@ export function captionFor({ format, work = {}, settings, variant = 0 }) {
   const vars = {
     stile: (work.style || 'tatuaggio').toLowerCase(),
     zona: work.bodyPart || 'pelle',
+    anni: new Date().getFullYear() - (settings.foundedYear || 2010),
+    dal: settings.foundedYear || 2010,
     ore: work.durationMin ? Math.max(1, Math.round(work.durationMin / 60)) : 'poche',
   };
   const hook = f.hook[variant % f.hook.length].replace(/\{(\w+)\}/g, (_, k) => vars[k] ?? '');
@@ -93,7 +95,7 @@ export function captionFor({ format, work = {}, settings, variant = 0 }) {
 // Prompt per generare didascalie con l'IA (facoltativo, richiede una chiave API nelle impostazioni).
 export function aiPrompt({ format, work = {}, settings }) {
   const f = FORMATS[format] || FORMATS.timelapse;
-  return `Scrivi 3 didascalie Instagram in italiano per lo studio di tatuaggi "${settings.studioName}" (${settings.address}, zona ${settings.zone}, aperto da oltre 16 anni).
+  return `Scrivi 3 didascalie Instagram in italiano per lo studio di tatuaggi "${settings.studioName}" (${settings.address}, zona ${settings.zone}, aperto dal ${settings.foundedYear || 2010}, quindi da ${new Date().getFullYear() - (settings.foundedYear || 2010)} anni: è il suo punto di forza rispetto agli studi nuovi).
 Contenuto: ${f.label}. Obiettivo: ${f.goal}.
 Lavoro: stile ${work.style || 'non indicato'}, zona del corpo ${work.bodyPart || 'non indicata'}, durata ${work.durationMin ? Math.round(work.durationMin / 60) + ' ore' : 'non indicata'}, descrizione: ${work.description || '-'}.
 Regole: tono diretto e professionale, niente trend o balletti, massimo 3 frasi, chiudi sempre con una chiamata all'azione (DM o link in bio), poi una riga con la posizione e una con 8-12 hashtag locali (Milano, Navigli) e di stile. Separa le 3 didascalie con una riga "---".`;
