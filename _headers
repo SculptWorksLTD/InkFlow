@@ -1,0 +1,5 @@
+# Il service worker va sempre ricontrollato: è da lui che parte l'aggiornamento automatico.
+/sw.js
+  Cache-Control: no-cache
+/js/version.js
+  Cache-Control: no-cache

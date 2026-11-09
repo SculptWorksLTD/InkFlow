@@ -1,54 +1,25 @@
-name: Pubblica InkFlow
+name: Test InkFlow
 
+# La pubblicazione avviene su Cloudflare Pages (collegato alla repo privata),
+# che a ogni push esegue scripts/build.sh. Qui girano i test.
 on:
   push:
     branches: [main]
+  pull_request:
   workflow_dispatch:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: pages
-  cancel-in-progress: true
 
 jobs:
-  deploy:
+  test:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-
       - name: Test
         run: TZ=Europe/Rome npm test
-
-      # Ogni pubblicazione ha una versione nuova: il service worker cambia
-      # e le app installate si aggiornano da sole alla riapertura.
-      - name: Imposta versione
-        run: |
-          V="$(date -u +%Y.%m.%d)-${GITHUB_SHA::7}"
-          sed -i "s/const VERSION = 'dev';/const VERSION = '$V';/" sw.js
-          sed -i "s/export const VERSION = 'dev';/export const VERSION = '$V';/" js/version.js
-          grep -q "$V" sw.js && grep -q "$V" js/version.js
-          mkdir _site
-          cp -r index.html richiesta.html manifest.webmanifest sw.js css js icons _site/
-          touch _site/.nojekyll
-
-      - uses: actions/configure-pages@v5
-        with:
-          enablement: true
-
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: _site
-
-      - id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Prova della build
+        run: bash scripts/build.sh
