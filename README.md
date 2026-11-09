@@ -17,7 +17,7 @@ Gestionale per studi di tatuaggi, pensato per Nero Ink Tattoo Shop (Milano): dal
 
 ## Come si usa
 
-L'app è pubblicata su GitHub Pages: `https://sculptworksltd.github.io/inkflow/`
+L'app è pubblicata su GitHub Pages: `https://sculptworksltd.github.io/InkFlow/`
 
 - **iPhone:** Safari → Condividi → "Aggiungi alla schermata Home"
 - **Android:** Chrome → ⋮ → "Installa app"
