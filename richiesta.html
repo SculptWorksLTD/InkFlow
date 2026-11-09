@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Richiedi il tuo tatuaggio</title>
+  <meta name="description" content="Raccontaci la tua idea: ti rispondiamo su WhatsApp con preventivo e date libere.">
+  <meta name="theme-color" content="#0e0e10">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/app.css">
+  <style>
+    .wrap { max-width: 620px; margin: 0 auto; padding: 28px 16px 60px; }
+    .hero h1 { font-size: 1.7rem; }
+    .hero p { color: var(--muted); }
+    .done { display: none; }
+    .done.show { display: block; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="hero">
+      <h1 id="studio">Richiedi il tuo tatuaggio</h1>
+      <p>Raccontaci l'idea: ti rispondiamo su WhatsApp con preventivo e prime date libere. Consulenza gratuita.</p>
+    </div>
+    <form id="f" class="grid-form card" novalidate></form>
+    <div class="card done" id="done">
+      <h2>Quasi fatto</h2>
+      <p>Si è aperto WhatsApp con la tua richiesta già scritta: premi <strong>Invia</strong>. Se vuoi, allega subito una foto della zona o una reference.</p>
+      <p class="muted small">Se WhatsApp non si è aperto <a id="again" href="#">tocca qui</a>.</p>
+    </div>
+    <p class="muted small center" id="addr"></p>
+  </div>
+  <script type="module" src="js/form.js"></script>
+</body>
+</html>

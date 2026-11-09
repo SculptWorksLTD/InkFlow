@@ -1,0 +1,23 @@
+{
+  "name": "InkFlow – gestionale studio",
+  "short_name": "InkFlow",
+  "description": "Richieste, agenda, clienti, automazioni, contenuti, sponsorizzate e offerte per lo studio.",
+  "lang": "it",
+  "start_url": "./index.html#/oggi",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0e0e10",
+  "theme_color": "#0e0e10",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ],
+  "shortcuts": [
+    { "name": "Oggi", "url": "./index.html#/oggi" },
+    { "name": "Agenda", "url": "./index.html#/agenda" },
+    { "name": "Nuova richiesta", "url": "./index.html#/richieste/nuova" }
+  ]
+}
